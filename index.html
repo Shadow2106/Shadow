@@ -1,50 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eternal</title>
-    <link rel="icon" href="./images/Logo.png" type="image/icon type">
+    <link rel="icon" href="./images/logo.png" type="image/icon type">
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Domine:wght@400..700&display=swap" rel="stylesheet">
 </head>
+
 <body>
-<!-- Navbar -->
+    <!-- Navbar-->
 
     <div class="navbar">
         <div class="logo">
-            <span class="title"><b>Eternal</b></span>
+            <span class="title" style="display: flex; align-items: center;">
+                <img src="./images/logo1.jpg" width="45px"><b>ETERNAL</b>
+            </span>
         </div>
         <ul class="nav-links">
-            <li><a href="#">About</a></li>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Category</a></li>
-            <li><a href="#">Read</a></li>
+            <li><a href="#" class="line">About</a></li>
+            <li><a href="#" class="line">Home</a></li>
+            <li><a href="#" class="line">Category</a></li>
+            <li><a href="#" class="line">Read</a></li>
         </ul>
         <div class="nav-actions">
-            
-            <button class="search-button">Search<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+
+            <button class="search-button">Search<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path
+                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
                 </svg></button>
         </div>
     </div>
- <!-- Home -->
+    <!-- Home -->
 
     <div class="container-home">
         <div class="text-section">
             <p>The Boy's Book</p>
             <h1>Discover<br> the<br> Wonders of</h1>
-            <p><br>Explore our vast selection of free ebooks, novels, and literature across a wide range of genres. Immerse yourself in captivating stories.</p>
+            <p><br>Explore our vast selection of free ebooks, novels, and literature across a wide range of genres.
+                Immerse yourself in captivating stories.</p>
             <a href="#" class="button">Read Now</a>
             <a href="#" class="explore">Explore More</a>
         </div>
         <div class="book-cover">
-        <img src="./images/book1.jpg" alt="Book Cover">  
+            <img src="./images/book1.jpg" alt="Book Cover">
         </div>
     </div>
- <!-- slide -->
+    <!-- Genre -->
+    <div class="container-g">
+        <div class="genre">
+            <div class="g"><img src="./images/romance.png">
+                <p>Romance</p>
+            </div>
+            <div class="g"><img src="./images/mystry.png">
+                <p>Mystery</p>
+            </div>
+            <div class="g"><img src="./images/fantasy.png">
+                <p>Fantasy</p>
+            </div>
+            <div class="g"><img src="./images/horror.png">
+                <p>Horror</p>
+            </div>
+            <div class="g"><img src="./images/study.png">
+                <p>Education</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- slide -->
 
     <div class="slideshow-container">
 
@@ -53,11 +78,12 @@
                 <div class="card-text">
                     <h2 class="card-title">Alice's Adventures in Wonderland</h2>
                     <p class="badge">Novel</p>
-                    <p>"Alice's Adventures in Wonderland" by Lewis Carroll is a classic children's novel<br> written 
-                    in the mid-19th century. The story follows a young girl named Alice who,
-                    <br> feeling bored and sleepy while sitting by a riverbank, encounters a White Rabbit
-                    <br> and follows it down a rabbit hole, plunging into a fantastical world filled with
-                    <br> curious creatures and whimsical adventures.</p>
+                    <p>"Alice's Adventures in Wonderland" by Lewis Carroll is a classic children's novel<br> written
+                        in the mid-19th century. The story follows a young girl named Alice who,
+                        <br> feeling bored and sleepy while sitting by a riverbank, encounters a White Rabbit
+                        <br> and follows it down a rabbit hole, plunging into a fantastical world filled with
+                        <br> curious creatures and whimsical adventures.
+                    </p>
                     <p>Genre: Fantasy</p>
                     <p>Author: Lewis Carroll</p>
                 </div>
@@ -66,16 +92,16 @@
                 </a>
             </div>
         </div>
-        
+
         <div class="mySlides">
             <div class="slide">
                 <div class="card-text">
                     <h2 class="card-title">The Adventures of Sherlock Holmes</h2>
                     <p class="badge">Novel</p>
                     <p>"The Adventures of Sherlock Holmes" by Arthur Conan Doyle is a collection of<br> detective
-                         stories written during the late 19th century. The book introduces<br> the legendary 
+                        stories written during the late 19th century. The book introduces<br> the legendary
                         detective Sherlock Holmes and his loyal companion, <br>Dr. John Watson, as they embark
-                         on various intriguing cases, filled with<br> mystery and clever deductions.</p>
+                        on various intriguing cases, filled with<br> mystery and clever deductions.</p>
                     <p>Genre: Mystery</p>
                     <p>Author: Conan Doyle</p>
                 </div>
@@ -84,16 +110,16 @@
                 </a>
             </div>
         </div>
-        
+
         <div class="mySlides">
             <div class="slide">
                 <div class="card-text">
                     <h2 class="card-title">The Wonderful Wizard of Oz</h2>
                     <p class="badge">Novel</p>
                     <p>"The Wonderful Wizard of Oz" by L. Frank Baum is a classic children's novel<br> written
-                         in the late 19th century. The story centers on a young girl named Dorothy,<br>
-                         who lives on the Kansas prairies and is whisked away to the<br>
-                         magical Land of Oz by a cyclone. </p>
+                        in the late 19th century. The story centers on a young girl named Dorothy,<br>
+                        who lives on the Kansas prairies and is whisked away to the<br>
+                        magical Land of Oz by a cyclone. </p>
                     <p>Genre: Fantasy and Literature</p>
                     <p>Author: L. Frank Baum</p>
                 </div>
@@ -109,9 +135,9 @@
                     <h2 class="card-title">Peter Pan</h2>
                     <p class="badge">Novel</p>
                     <p>"Peter Pan" by J.M. Barrie is a classic children's novel first published in the<br> early
-                         20th century. The story revolves around the beloved character Peter Pan<br> and
-                         follows his adventures in the fantastical Neverland, along with a<br> young girl named
-                         Wendy Darling and her brothers, John and Michael.</p>
+                        20th century. The story revolves around the beloved character Peter Pan<br> and
+                        follows his adventures in the fantastical Neverland, along with a<br> young girl named
+                        Wendy Darling and her brothers, John and Michael.</p>
                     <p>Genre: Fantasy and Adventure</p>
                     <p>Author: J.M. Barrie</p>
                 </div>
@@ -127,35 +153,41 @@
                     <h2 class="card-title">Romeo and Juliet</h2>
                     <p class="badge">Novel</p>
                     <p>"Romeo and Juliet" by William Shakespeare is a tragedy likely written during<br> the
-                         late 16th century. The play centers on the intense love affair between<br>
-                         two young lovers, Romeo Montague and Juliet Capulet, whose families<br> are
-                         embroiled in a bitter feud.</p>
+                        late 16th century. The play centers on the intense love affair between<br>
+                        two young lovers, Romeo Montague and Juliet Capulet, whose families<br> are
+                        embroiled in a bitter feud.</p>
                     <p>Genre: Romance</p>
                     <p>Author: William Shakespeare</p>
                 </div>
                 <a href="#" class="card-link">
-                    <img src="./images/Romeo and Juliet book cover without blue background.png" alt="" class="card-image">
+                    <img src="./images/Romeo and Juliet book cover without blue background.png" alt=""
+                        class="card-image">
                 </a>
             </div>
         </div>
-        
-        <a class="prev" onclick="plusSlides(-1)"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="gray" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z"/>
-          </svg></a>
-        <a class="next" onclick="plusSlides(1)"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="gray" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z"/>
-          </svg></a>
+
+        <a class="prev" onclick="plusSlides(-1)"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
+                fill="gray" class="bi bi-arrow-left-circle" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-4.5-.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5z" />
+            </svg></a>
+        <a class="next" onclick="plusSlides(1)"><svg xmlns="http://www.w3.org/2000/svg" width="36" height="36"
+                fill="gray" class="bi bi-arrow-right-circle" viewBox="0 0 16 16">
+                <path fill-rule="evenodd"
+                    d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M4.5 7.5a.5.5 0 0 0 0 1h5.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5z" />
+            </svg></a>
     </div>
-        
 
 
 
-<!-- footer -->
+
+    <!-- footer -->
 
     <footer>
         <div class="footer-section">
             <div class="terms">
-                <p>Our eBooks are provided for free and are for personal use only. Please respect copyright laws and do not distribute or sell our eBooks. For more details, read our full terms of use.</p>
+                <p>Our eBooks are provided for free and are for personal use only. Please respect copyright laws and do
+                    not distribute or sell our eBooks. For more details, read our full terms of use.</p>
             </div>
         </div>
         <div class="footer-section">
@@ -177,4 +209,5 @@
     </footer>
     <script src="script.js"></script>
 </body>
+
 </html>
