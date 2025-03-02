@@ -286,7 +286,6 @@ body {
     .container-home {
         grid-template-columns: 1fr 1fr;
         align-items: center;
-        height: 100lvh;
     }
 
     .text-section {
@@ -324,6 +323,13 @@ body {
     .book-cover img {
         max-width: 300px;
     }
+    .text-section .button{
+        margin-top: 2px;
+    }
+    .text-section p{
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 }
 
 @media (max-width: 640px) {
@@ -337,6 +343,13 @@ body {
 
     .book-cover img {
         max-width: 250px;
+    }
+    .text-section .button{
+        margin-top: 2px;
+    }
+    .text-section p{
+        margin-top: 10px;
+        margin-bottom: 10px;
     }
 }
 
