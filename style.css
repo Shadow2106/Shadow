@@ -431,9 +431,8 @@ body {
     justify-content: center;
     width: 100%;
     background-color: #F9F7F2;
-    padding: 30px;
-    padding-right: 0;
-    padding-left: 0;
+    padding: 0  ;
+    border-radius: 15px;
 }
 
 .slide {
@@ -443,7 +442,7 @@ body {
 .card-text {
     width: 80%;
     max-width: 40rem;
-    padding-left: 20px;
+    padding-left: 5px;
     color: gray;
     font-size: 1.1rem;
 }
@@ -453,11 +452,15 @@ body {
 .gp1{
     margin-bottom: 0;
 }
+.cut1{
+    display: none;
+}
 
 .card-link {
     width: auto;
-    padding: 18px;
+    padding: 5px;
     border-radius: 15px;
+    padding-left: 15px;
 }
 
 .card-image {
@@ -527,6 +530,12 @@ body {
 
     .card-title {
         font-size: 1.4rem;
+    }
+    .cut{
+        display: none;
+    }
+    .cut1{
+        display: inline-block;
     }
 
     .card-image {

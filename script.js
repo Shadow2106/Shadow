@@ -1,17 +1,17 @@
 let slideIndex = 1;
 showSlides(slideIndex);
-let timer = setInterval(() => plusSlides(1), 5000); 
+let timer = setInterval(() => plusSlides(1), 4000); 
 
 function plusSlides(n) {
   clearInterval(timer);
   showSlides(slideIndex += n);
-  timer = setInterval(() => plusSlides(1), 5000); 
+  timer = setInterval(() => plusSlides(1), 4000); 
 }
 
 function currentSlide(n) {
   clearInterval(timer); 
   showSlides(slideIndex = n);
-  timer = setInterval(() => plusSlides(1), 5000); 
+  timer = setInterval(() => plusSlides(1), 4000); 
 }
 
 function showSlides(n) {
