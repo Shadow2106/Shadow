@@ -12,6 +12,7 @@ body {
     font-weight: bold;
     font-size: 1.6rem;
     text-decoration: none;
+    padding-left: 50px;
 }
 
 nav {
@@ -98,6 +99,7 @@ nav {
     display: inline-block;
     min-width: 50px;
     flex-wrap: nowrap;
+    margin-right: 50px;
 }
 
 @media (max-width: 862px) {
@@ -134,7 +136,9 @@ nav {
     .search-button {
         display: none;
     }
-
+    .title{
+        padding-left: 0;
+    }
     .signup {
         display: none;
 
@@ -230,7 +234,7 @@ body {
 
 .text-section {
     text-align: center;
-
+    padding-left: 50px;
 }
 
 .text-section h1 {
@@ -319,6 +323,10 @@ body {
     .text-section p {
         font-size: 1.1rem;
     }
+    .text-section {
+        text-align: left;
+        padding: 20px;
+    }
 
     .book-cover img {
         max-width: 300px;
@@ -341,6 +349,10 @@ body {
 
     .text-section p {
         font-size: 1rem;
+    }
+    .text-section {
+        text-align: left;
+        padding: 20px;
     }
 
     .book-cover img {
