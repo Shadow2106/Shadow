@@ -138,7 +138,7 @@ nav {
     }
 
     .title {
-        padding-left: 10px;
+        padding-left: 20px;
     }
 
     .signup {
@@ -160,7 +160,7 @@ nav {
         top: 0;
         right: -100%;
         z-index: 10;
-        width: 300px;
+        width: 250px;
         background-color: rgb(240, 232, 245);
         box-shadow: 10px 5px 10px rgba(131, 58, 180, 1);
         transition: 0.75s ease-out;
@@ -581,7 +581,7 @@ footer {
     bottom: 0;
     background: linear-gradient(to right, #00093c, #2d0b00);
     color: #fff;
-    padding: 100px 0 30px;
+    padding: 70px 0 30px;
     border-top-left-radius: 125px;
     font-size: 13px;
     line-height: 20px;
@@ -736,6 +736,7 @@ hr {
     footer {
         bottom: unset;
         border-top-left-radius: 0;
+        padding-top: 30px;
     }
 
     .col {
