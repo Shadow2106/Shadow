@@ -138,7 +138,7 @@ nav {
     }
 
     .title {
-        padding-left: 0;
+        padding-left: 10px;
     }
 
     .signup {
@@ -741,9 +741,8 @@ hr {
     .col {
         flex-basis: 100%;
     }
-
-    .s-icon {
-        display: flex;
-        justify-content: center;
+    .col:nth-child(2),
+    .col:nth-child(3) {
+        flex-basis: 10%;
     }
 }
