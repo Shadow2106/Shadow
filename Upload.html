@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novel Submission Portal</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            width: 100%;
+            height: auto;
+            margin: 0;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(to right, #EAE6F3, #FFF4E6);
+            font-family: "Poppins", sans-serif;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            border-radius: 16px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            width: 500px;
+            height: auto;
+            padding: 20px;
+            background-color: white;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+            background: linear-gradient(to right, rgba(131, 58, 180, 1) 0%, rgba(250, 114, 53, 1) 50%, rgba(252, 176, 69, 1) 100%);
+            color: transparent;
+            background-clip: text;
+            margin-bottom: 40px;
+        }
+
+        .upload {
+            margin-left: 30px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 17px;
+        }
+
+        input,
+        textarea,
+        select,
+        button {
+            width: 80%;
+            padding: 8px;
+            margin-bottom: 18px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #FA7235;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #submit{
+            padding: 12px;
+            font-size: 16px;
+            margin-top: 18px;
+        }
+
+        button:hover {
+            background-color: #f75c15;
+        }
+
+        input[type="file"]{
+            display: none;
+            margin-bottom: 0;
+        }
+
+        #fileup{
+            display: inline-block;
+            color: #ccc;
+            text-align: center;
+            padding: 20px 101px;
+            font-size: 18px;
+            letter-spacing: 1.5px;
+            user-select: none;
+            cursor: pointer;
+            border: 1px dashed;
+            border-radius: 5px;
+        }
+
+        #imageup{
+            display: inline-block;
+            color: #ccc;
+            text-align: center;
+            padding: 20px 90px;
+            font-size: 18px;
+            letter-spacing: 1.5px;
+            user-select: none;
+            cursor: pointer;
+            border: 1px dashed;
+            border-radius: 5px;
+        } 
+        #img{
+            margin-top: 18px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Novel Submission Portal</h1>
+        <div class="upload">
+            <form action="/submit-novel" method="post" enctype="multipart/form-data">
+                <label for="title">Novel Title:</label>
+                <input type="text" id="title" name="title" placeholder="Enter your novel's title (Within 50 character)"
+                    required>
+
+                <label for="author">Author Name:</label>
+                <input type="text" id="author" name="author" placeholder="Your name" required>
+
+                <label for="genre">Genre:</label>
+                <select id="genre" name="genre" required>
+                    <option value="">Select Genre</option>
+                    <option value="fantasy">Fantasy</option>
+                    <option value="romance">Romance</option>
+                    <option value="sci-fi">Sci-Fi</option>
+                    <option value="thriller">Thriller</option>
+                    <option value="mystery">Mystery</option>
+                    <option value="other">Other</option>
+                </select>
+
+                <label for="language">Language:</label>
+                <select id="language" name="language" required>
+                    <option value="">Select Language</option>
+                    <option value="english">English</option>
+                    <option value="spanish">Spanish</option>
+                    <option value="french">French</option>
+                    <option value="german">German</option>
+                    <option value="italian">Italian</option>
+                    <option value="chinese">Chinese</option>
+                    <option value="japanese">Japanese</option>
+                    <option value="korean">Korean</option>
+                    <option value="russian">Russian</option>
+                    <option value="arabic">Arabic</option>
+                    <option value="portuguese">Portuguese</option>
+                    <option value="other">Other</option>
+                </select>
+
+
+                <label for="synopsis">Synopsis:</label>
+                <textarea id="summary" name="summary" rows="5" placeholder="Type something seriously ,wonderful synopsis can attract more readers (Within 500 character)"
+                    required></textarea>
+
+                <label>Upload Novel File:</label>
+                <input type="file" id="file" name="file" accept=".pdf" required>
+                <label for="file" id="fileup"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
+                    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+                    <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708z"/>
+                  </svg> Upload File:</label>
+
+                <label for="cover" id="img">Upload Cover Image:</label>
+                <input type="file" id="cover" name="cover" accept="image/*">
+                <label for="cover" id="imageup"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
+                    <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+                    <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708z"/>
+                  </svg> Upload Image:</label>
+
+                <button type="submit" id="submit">Submit Novel</button>
+            </form>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
