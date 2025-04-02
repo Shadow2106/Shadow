@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookmarked Books</title>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+        @import url('https://fonts.googleapis.com/css2?family=Domine:wght@400..700&family=Expletus+Sans:ital,wght@0,400..700;1,400..700&family=Iceberg&display=swap');
+
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #EAE6F3, #FFF4E6);
+            font-family: "Poppins", sans-serif;
+
+        }
+
+        .container-n {
+            width: 85%;
+            margin: 0px auto;
+            padding-top: 50px;
+
+        }
+
+        h1 {
+            display: inline-block;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 2rem;
+            padding-bottom: 1.5rem;
+            background: linear-gradient(to right, rgba(131, 58, 180, 1) 0%, rgba(250, 114, 53, 1) 50%, rgba(252, 176, 69, 1) 100%);
+            color: transparent;
+            background-clip: text;
+            font-weight: bold;
+            font-family: "Expletus sans";
+            font-style: italic;
+        }
+
+        .ti {
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: #FA7235;
+        }
+
+        .search-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 70px;
+        }
+
+
+        #genreFilter {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        /* Book Grid */
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+        }
+
+        .book-card {
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .book-card img {
+            width: 160px;
+            height: 230px;
+            object-fit: cover;
+            border-radius: 1.5rem;
+        }
+
+        .book-card h3 {
+            margin: 10px 0;
+        }
+
+        .book-card p {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .bookmark-btn {
+            border: none;
+        }
+
+        .book-card {
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            position: relative;
+        }
+
+        .book-card img {
+            width: 160px;
+            height: 230px;
+            object-fit: cover;
+            border-radius: 1.5rem;
+        }
+
+        .book-card h3 {
+            margin: 10px 0;
+        }
+
+        .book-card p {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .bookmark-icon {
+            position: absolute;
+            top: 5px;
+            right: 0px;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            fill: rgba(131, 58, 180, 1);
+        }
+
+        .book-name {
+            text-align: center;
+        }
+
+        .button-6 {
+            background: rgba(131, 58, 180, 1);
+            font-weight: 700;
+            padding: 0;
+            border-radius: 5px;
+            border-color: transparent;
+        }
+
+        .button-6 span {
+            display: block;
+            background: rgb(255 255 255 / 1);
+            padding: 1rem 1.2rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transform: translate3d(-4px, -4px, 0);
+            transition: transform 0.3s cubic-bezier(0.7, 0, 0.2, 1);
+            font-family: "Poppins", sans-serif;
+            font-weight: 300;
+            font-size: 16px;
+        }
+
+        .button-6:hover span {
+            transform: translate3d(-8px, -8px, 0);
+        }
+
+        .button-c {
+            text-align: end;
+            padding-right: 50px;
+            padding-bottom: 50px;
+        }
+        .title {
+    color: #FA7235;
+    font-size: 2rem;
+    text-decoration: none;
+    padding-left: 50px;
+    font-weight: bold;
+    font-family: "Expletus sans";
+    font-style: italic;
+}
+.button-custom * {
+    font-family: Verdana, Geneva, sans-serif !important;
+    color: white;
+}
+
+.button-custom {
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 25px;
+    padding: 10px 20px;
+    color: white;
+    background: linear-gradient(135deg, rgb(255, 169, 50) 20%, rgb(252, 94, 21) 80%);
+    background-size: 200%;
+    background-position: left;
+    box-shadow: 0 4px 10px rgba(250, 114, 53, 0.4), 
+                0 2px 4px rgba(252, 176, 69, 0.3);
+
+    transition: background-position 400ms ease-in-out, 
+                box-shadow 400ms ease-in-out, 
+                transform 200ms ease-in-out;
+    cursor: pointer;
+}
+
+.button-custom:hover {
+    background-position: right;
+    box-shadow: 0 6px 12px rgba(250, 114, 53, 0.5), 
+                0 3px 6px rgba(252, 176, 69, 0.4);
+    transform: scale(1.05);
+}
+
+.button-custom:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 6px rgba(250, 114, 53, 0.4);
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    background-color: white;
+    z-index: 1;
+    box-shadow: 0 4px 8px rgba(250, 114, 53, 0.3); 
+
+}
+
+.line {
+    background-image: linear-gradient(transparent 0%, transparent 90%, hotpink 90%, hotpink 100%);
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    background-position-x: center;
+    transition: background-size 300ms;
+}
+
+.line:hover {
+    background-size: 100% 100%;
+    background-position-x: center;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    padding-left: 0;
+    gap: 2rem;
+}
+
+.nav-links li {
+    margin: 0px 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: gray;
+    height: 100%;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    padding-right: 50px;
+}
+
+.navc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.nav-s {
+    position: relative;
+    display: inline-block;
+  }
+
+  .s-btn {
+    padding: 7px 15px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    width: 110px;
+  }
+
+  .bi-search {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  .s-btn:focus {
+    outline: none; /* Remove the default outline if you don't want it */
+}
+
+.signup {
+    text-decoration: none;
+    color: gray;
+    font-size: 1rem;
+    margin: 0 10px;
+    padding: 2px 10px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    background-color: white;
+    text-align: center;
+    display: inline-block;
+    min-width: 50px;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    margin-right: 50px;
+}
+
+@media (max-width: 862px) {
+    .nav-links {
+        gap: 0.5rem;
+    }
+}
+
+.svg1 {
+    vertical-align: middle;
+    color: gray;
+}
+
+.l-c a .spl {
+    background-color: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(250, 114, 53, 1) 50%, rgba(252, 176, 69, 1) 100%);
+}
+
+/* Side bar */
+
+.l-c {
+    display: none;
+}
+
+#s-a {
+    display: none;
+}
+
+.o-s,
+.c-s {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    .title {
+        padding-left: 20px;
+    }
+
+    .signup {
+        display: none;
+
+    }
+    .nav-actions{
+        display: none;
+    }
+    
+
+    .nav-s {
+        position: relative;
+        display: inline-block;
+      }
+    
+      .s-btn {
+        border: 1px solid #ccc;
+        width: 80px;
+        margin-right: 10px;
+      }
+    
+      .bi-search {
+        position: absolute;
+        right: 8px;
+        top: 50%;
+        transform: translateY(-50%);
+        pointer-events: none;
+        margin-right: 10px;
+      }
+
+    .nav-links {
+        display: none;
+    }
+
+    .l-c {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        right: -100%;
+        z-index: 10;
+        width: 250px;
+        background-color: rgb(240, 232, 245);
+        box-shadow: 10px 5px 10px rgba(131, 58, 180, 1);
+        transition: 0.75s ease-out;
+    }
+
+    .l-c a {
+        text-decoration: none;
+        box-sizing: border-box;
+        height: auto;
+        width: 100%;
+        padding: 20px 30px;
+        justify-content: flex-start;
+        color: #FA7235;
+        font-size: 1.1rem;
+    }
+
+    .l-c a:last-child {
+        background: linear-gradient(90deg, rgba(131, 58, 180, 1) 0%, rgba(250, 114, 53, 1) 50%, rgba(252, 176, 69, 1) 100%);
+        border-radius: 10px;
+        color: whitesmoke;
+    }
+
+    .o-s,
+    .c-s {
+        display: block;
+    }
+
+    .o-s {
+        padding-right: 1rem;
+    }
+
+    .c-s {
+        padding: 1rem;
+    }
+
+    #s-a:checked~.l-c {
+        right: 0;
+    }
+
+    #s-a:checked~#overlay {
+        height: 100%;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 9;
+    }
+
+}
+footer {
+    width: 100%;
+    bottom: 0;
+    background: linear-gradient(to right, #00093c, #2d0b00);
+    color: #fff;
+    padding: 70px 0 30px;
+    border-top-left-radius: 125px;
+    font-size: 13px;
+    line-height: 20px;
+}
+.title-f {
+    color: rgb(140, 52, 199);
+    font-weight: bold;
+    font-size: 2rem;
+    font-family: "Expletus sans";
+    font-style: italic;
+}
+
+.row {
+    width: 85%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.col {
+    flex-basis: 25%;
+    padding: 10px;
+}
+
+.col:nth-child(2),
+.col:nth-child(3) {
+    flex-basis: 15%;
+}
+
+.logo21 {
+    width: 200px;
+    margin-bottom: 30px;
+}
+
+.ad {
+    margin: 0;
+}
+
+.col h3 {
+    width: fit-content;
+    margin-bottom: 40px;
+    position: relative;
+}
+
+.email {
+    width: fit-content;
+    border-bottom: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+ul {
+
+    padding-left: 0;
+}
+
+ul li {
+    list-style: none;
+    margin-bottom: 12px;
+}
+
+.col ul li a:hover {
+    text-decoration: underline;
+}
+
+ul li a {
+    text-decoration: none;
+    color: #fff;
+}
+
+form {
+    padding-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 50px;
+}
+
+form .es {
+    font-size: 18px;
+    margin-right: 10px;
+}
+
+form input {
+    width: 100%;
+    background: transparent;
+    color: #fff;
+    border: 0;
+    outline: none;
+}
+
+form button {
+    background: transparent;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+}
+
+form button .es1 {
+    font-size: 16px;
+    color: #ccc;
+}
+
+.s-icon img {
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    color: #fff;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+hr {
+    width: 90%;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    margin: 20px auto;
+}
+
+.copyright {
+    text-align: center;
+}
+
+.ul {
+    width: 100%;
+    height: 5px;
+    background: #767676;
+    border-radius: 3px;
+    position: absolute;
+    top: 25px;
+    left: 0;
+    overflow: hidden;
+}
+
+.ul span {
+    width: 15px;
+    height: 100%;
+    background: #fff;
+    border-radius: 3px;
+    position: absolute;
+    top: 0px;
+    left: 10px;
+    animation: moving 2s linear infinite;
+}
+
+@keyframes moving {
+    0% {
+        left: -20px;
+    }
+
+    100% {
+        left: 100%
+    }
+}
+
+@media (max-width: 768px) {
+    footer {
+        bottom: unset;
+        border-top-left-radius: 0;
+        padding-top: 30px;
+    }
+
+    .col {
+        flex-basis: 100%;
+    }
+
+    .col:nth-child(2),
+    .col:nth-child(3) {
+        flex-basis: 10%;
+    }
+}
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <a href="index.html" class="title" style="display: flex; align-items: center;">
+                ETERNAL
+            </a>
+        </div>
+        <div class="navc">
+            <ul class="nav-links">
+                <li><a href="index.html" class="line">Home</a></li>
+                <li><a href="#" class="line">About</a></li>
+                <li><a href="Library.html" class="line">Novels</a></li>
+                <li><a href="bookmarks.html" class="line">Bookmarks</a></li>
+                <li><a href="Upload.html" class="line">Create</a></li>
+            </ul>
+        </div>
+        <div class="nav-actions">
+            <a href="Log-in.html">
+            <button class=" button-custom">
+                <span style="font-weight: 100;">Sign in</span>
+            </button>
+            </a>
+
+        </div>
+
+        <input type="checkbox" id="s-a">
+        <label for="s-a" class="o-s">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                fill="currentColor">
+                <path d="M120-240v-80h720v80H120Zm0-200v-80h720v80H120Zm0-200v-80h720v80H120Z" />
+            </svg>
+        </label>
+        <label id="overlay" for="s-a"></label>
+        <div class="l-c">
+            <label for="s-a" class="c-s">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill="currentColor">
+                    <path
+                        d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z" />
+                </svg>
+            </label>
+
+            <a href="#"><svg class="svg1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-house h-5 w-5">
+                    <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path>
+                    <path
+                        d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z">
+                    </path>
+                </svg> Home</a>
+            <a href="#"><svg class="svg1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-library h-5 w-5">
+                    <path d="m16 6 4 14"></path>
+                    <path d="M12 6v14"></path>
+                    <path d="M8 8v12"></path>
+                    <path d="M4 4v16"></path>
+                </svg> Novels</a>
+            <a href="#"><svg class="svg1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                    class="bi bi-fire" viewBox="0 0 16 16">
+                    <path
+                        d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16m0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15" />
+                </svg> Popular</a>
+            <a href="#"><svg class="svg1" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="lucide lucide-bookmark h-5 w-5">
+                    <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"></path>
+                </svg> Bookmarks</a>
+            <a href="Log-in.html" class="spl"><svg class="svg1" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                    fill="currentColor" class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0z" />
+                    <path fill-rule="evenodd"
+                        d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
+                </svg> Sign in</a>
+        </div>
+    </nav>
+    <div class="container-n">
+
+    <div class="book-name">
+        <h1>Bookmarked Books</h1>
+    </div>
+    <div class="button-c"><button class="button-def button-6" onclick="clearBookmarks()"><span>Clear All
+                Bookmarks</span></button></div>
+    <div class="book-grid" id="bookmarkedBooks"></div>
+    </div>
+    <footer>
+        <div class="row">
+            <div class="col">
+                <p class="title-f">ETERNAL</p>
+                <p>Our eBooks are provided for free and are for personal use only. Please respect copyright laws and do
+                    not distribute or sell our eBooks. For more details, read our full terms of use.</p>
+            </div>
+            <div class="col">
+                <h3>Office <div class="ul"><span></span></div>
+                </h3>
+                <p class="ad">VIT</p>
+                <p class="ad">Katpadi ,Vellore</p>
+                <p class="ad">Tamil Nadu 632014, India</p>
+                <p class="email">Shadow@gmail.com</p>
+                <h4>+91 - 8277230100</h4>
+            </div>
+            <div class="col">
+                <h3>Links<div class="ul"><span></span></div>
+                </h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Contacts</a></li>
+                    <li><a href="#">Help</a></li>
+                </ul>
+            </div>
+            <div class="col">
+                <h3>Newsletter<div class="ul"><span></span></div>
+                </h3>
+                <form>
+                    <svg class="es" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-envelope" viewBox="0 0 16 16">
+                        <path
+                            d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1zm13 2.383-4.708 2.825L15 11.105zm-.034 6.876-5.64-3.471L8 9.583l-1.326-.795-5.64 3.47A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741M1 11.105l4.708-2.897L1 5.383z" />
+                    </svg>
+                    <input type="email" placeholder="Enter Your Emial id" required>
+                    <button type="submit"><svg class="es1" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-arrow-right" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8" />
+                        </svg></button>
+                </form>
+                <div class="s-icon">
+                    <a href="#"><img class="si" src="./images/facebook.png" alt="Facebook"></a>
+                    <a href="#"><img class="si" src="./images/twitter.png" alt="Twitter"></a>
+                    <a href="#"><img class="si" src="./images/instagram.png" alt="Instagram"></a>
+                    <a href="#"><img class="si" src="./images/snapchat.png" alt="snapchat"></a>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <p class="copyright">Copyright © 2025 Eternal Inc. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="o7Dk57vNcT5JzXhRXEptD";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+        </script>
+
+    <script>
+        const books = [
+            { name: 'Journey to the Center of the Earth', genre: 'Fiction', image: './images/centerofearth.jpg', url: 'https://example.com/journey-to-center-of-the-earth' },
+            { name: 'The Odyssey', genre: 'Fiction', image: './images/odyssey.jpg', url: 'https://example.com/odyssey' },
+            { name: 'Frankenstein', genre: 'Fiction', image: './images/Frankenstein .png', url: 'https://example.com/frankenstein' },
+            { name: 'The Blue Castle', genre: 'Fiction', image: './images/castle.jpg', url: 'https://example.com/blue-castle' },
+            { name: 'Leviathan', genre: 'Fiction', image: './images/Leviathan.jpg', url: 'https://example.com/leviathan' },
+            { name: 'Legend of Sleepy Hollow', genre: 'Fiction', image: './images/Hollow.png', url: 'https://example.com/sleepy-hollow' },
+            { name: 'A Doll\'s House', genre: 'Fiction', image: './images/Dolls.jpg', url: 'https://example.com/a-dolls-house' },
+            { name: 'Moby Dick', genre: 'Fiction', image: './images/Moby-Dick.png', url: 'https://example.com/moby-dick' },
+            { name: 'Little Women', genre: 'Fiction', image: './images/women.jpg', url: 'https://example.com/little-women' },
+            { name: 'A Princess of Mars', genre: 'Fiction', image: './images/mars.png', url: 'https://example.com/princess-of-mars' },
+            { name: 'Alice in Wonderland', genre: 'Fantasy', image: './images/alice.jpeg', url: 'https://example.com/alice-in-wonderland' },
+            { name: 'Sherlock Holmes', genre: 'Mystery', image: './images/holmes.png', url: 'https://example.com/sherlock-holmes' },
+            { name: 'The Wonderful Wizard of Oz', genre: 'Fantasy', image: './images/oz.png', url: 'https://example.com/wonderful-wizard-of-oz' },
+            { name: 'Romeo and Juliet', genre: 'Fiction', image: './images/Romeo .png', url: 'https://example.com/romeo-and-juliet' },
+            { name: 'Peter Pan', genre: 'Fantasy', image: './images/p.png', url: 'https://example.com/peter-pan' }
+        ];
+
+        function displayBookmarkedBooks() {
+            const bookmarkedBooksContainer = document.getElementById('bookmarkedBooks');
+            bookmarkedBooksContainer.innerHTML = '';
+
+            const bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+            const bookmarkedBooks = books.filter(book => bookmarks.includes(book.name));
+
+            if (bookmarkedBooks.length === 0) {
+                bookmarkedBooksContainer.innerHTML = '<p style="font-size:24px; padding-left:50px; color:rgba(131, 58, 180, 1); padding-bottom:400px" >No Novel is Bookmarked.</p>';
+            } else {
+                bookmarkedBooks.forEach(book => {
+                    const bookCard = document.createElement('div');
+                    bookCard.classList.add('book-card');
+
+                    bookCard.innerHTML = `
+                        <a href="${book.url}" target="_blank">
+                            <img src="${book.image}" alt="${book.name}">
+                            <h3>${book.name}</h3>
+                        </a>
+                        <p>${book.genre}</p>
+                        <svg class="bookmark-icon" onclick="removeBookmark('${book.name}')" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M6 2a2 2 0 0 0-2 2v18l8-5 8 5V4a2 2 0 0 0-2-2H6z"/>
+                        </svg>
+                    `;
+
+                    bookmarkedBooksContainer.appendChild(bookCard);
+                });
+            }
+        }
+
+        function removeBookmark(bookName) {
+            let bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+            bookmarks = bookmarks.filter(name => name !== bookName);
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+            displayBookmarkedBooks();
+        }
+
+        function clearBookmarks() {
+            localStorage.removeItem('bookmarks');
+            displayBookmarkedBooks();
+        }
+
+        displayBookmarkedBooks();
+    </script>
+</body>
+
+</html>
