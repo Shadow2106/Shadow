@@ -138,7 +138,7 @@
     <div class="container">
         <h1>Novel Submission Portal</h1>
         <div class="upload">
-            <form action="/submit-novel" method="post" enctype="multipart/form-data">
+            <form action="/submit-novel" method="POST" enctype="multipart/form-data">
                 <label for="title">Novel Title:</label>
                 <input type="text" id="title" name="title" placeholder="Enter your novel's title (Within 50 character)"
                     required>
@@ -175,7 +175,7 @@
                 </select>
 
 
-                <label for="synopsis">Synopsis:</label>
+                <label for="summary">Synopsis:</label>
                 <textarea id="summary" name="summary" rows="5" placeholder="Type something seriously ,wonderful synopsis can attract more readers (Within 500 character)"
                     required></textarea>
 
@@ -184,7 +184,8 @@
                 <label for="file" id="fileup"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-upload" viewBox="0 0 16 16">
                     <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
                     <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708z"/>
-                  </svg> Upload File:</label>
+                  </svg> Upload File:</label>   
+                  <span id="fileNameDisplay"></span>
 
                 <label for="cover" id="img">Upload Cover Image:</label>
                 <input type="file" id="cover" name="cover" accept="image/*">
@@ -192,13 +193,22 @@
                     <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
                     <path d="M7.646 1.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 2.707V11.5a.5.5 0 0 1-1 0V2.707L5.354 4.854a.5.5 0 1 1-.708-.708z"/>
                   </svg> Upload Image:</label>
+                  <span id="coverNameDisplay"></span>
 
                 <button type="submit" id="submit">Submit Novel</button>
             </form>
 
         </div>
     </div>
-
+    <script>
+        document.getElementById('file').addEventListener('change', function () {
+            document.getElementById('fileNameDisplay').textContent = this.files[0]?.name || '';
+        });
+        document.getElementById('cover').addEventListener('change', function () {
+            document.getElementById('coverNameDisplay').textContent = this.files[0]?.name || '';
+        });
+        </script>
+        
 </body>
 
 </html>

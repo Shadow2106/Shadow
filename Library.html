@@ -825,6 +825,7 @@ nav {
     <script>
         // Sample Book Data
         const books = [
+            { name: 'Romeo and Juliet', genre: 'Romance', image: './images/Romeo .png', url: 'reveiw.html' },
             { name: 'Journey to the Center of the Earth', genre: 'Adventure', image: './images/centerofearth.jpg', url: 'https://example.com/journey-to-center-of-the-earth' },
             { name: 'The Odyssey', genre: 'Mystery', image: './images/odyssey.jpg', url: 'https://example.com/odyssey' },
             { name: 'Frankenstein', genre: 'Horror', image: './images/Frankenstein .png', url: 'https://example.com/frankenstein' },
@@ -838,7 +839,6 @@ nav {
             { name: 'Alice in Wonderland', genre: 'Fantasy', image: './images/alice.jpeg', url: 'https://example.com/alice-in-wonderland' },
             { name: 'Sherlock Holmes', genre: 'Mystery', image: './images/holmes.png', url: 'https://example.com/sherlock-holmes' },
             { name: 'The Wonderful Wizard of Oz', genre: 'Fantasy', image: './images/oz.png', url: 'https://example.com/wonderful-wizard-of-oz' },
-            { name: 'Romeo and Juliet', genre: 'Romance', image: './images/Romeo .png', url: 'https://example.com/romeo-and-juliet' },
             { name: 'Peter Pan', genre: 'Fantasy', image: './images/p.png', url: 'https://example.com/peter-pan' }
         ];
 
@@ -911,6 +911,9 @@ nav {
         // Ensure books display on page load
         filterBooks();
     </script>
+    <script>
+        (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="o7Dk57vNcT5JzXhRXEptD";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
+        </script>
 </body>
 
 </html>

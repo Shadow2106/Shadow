@@ -33,7 +33,7 @@ body {
     border-radius: 25px;
     padding: 10px 20px;
     color: white;
-    background: linear-gradient(135deg, rgb(255, 169, 50) 20%, rgb(252, 94, 21) 80%);
+    background: linear-gradient(135deg, rgb(255, 169, 50) 30%, rgb(252, 94, 21) 50%);
     background-size: 200%;
     background-position: left;
     box-shadow: 0 4px 10px rgba(250, 114, 53, 0.4), 
